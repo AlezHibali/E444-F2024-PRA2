@@ -14,4 +14,7 @@ Overwritten by Activity 1.3
 ![Alt text](assets/img/activity13.png)
 
 ## Activity 1.4
-![Alt text](assets/img/activity13.png)
+![Alt text](assets/img/activity141.png)
+![Alt text](assets/img/activity142.png)
+![Alt text](assets/img/activity143.png)
+![Alt text](assets/img/activity144.png)
