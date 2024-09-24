@@ -17,5 +17,11 @@ EXPOSE 5000
 RUN useradd hello_user
 USER hello_user
 
-CMD ["flask", "--app", "hello", "run"]
+# add "--host", "0.0.0.0" to ensure it listens on all network interfaces
+# run with docker run -p 5000:5000 hello_flask    
+CMD ["flask", "--app", "hello", "run", "--host", "0.0.0.0"]
+
+# # Approach of using venv
+# RUN python -m venv venv
+# RUN venv/bin/pip install -r requirements/docker.txt
 # ENTRYPOINT ["./deploy.sh"]

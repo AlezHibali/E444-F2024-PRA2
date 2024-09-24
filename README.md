@@ -22,3 +22,6 @@ Overwritten by Activity 1.3
 ![Alt text](assets/img/activity143.png)
 ### Step5
 ![Alt text](assets/img/activity144.png)
+
+## Activity 2
+![Alt text](assets/img/activity2.png)
