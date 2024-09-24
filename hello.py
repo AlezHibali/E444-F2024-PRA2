@@ -3,17 +3,39 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
 
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
-moment = Moment(app)
-
 # flask --app hello run
 # correct command to run flask app
 # refer: https://flask.palletsprojects.com/en/2.3.x/cli/#run-the-development-server
 
-@app.route('/')
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+moment = Moment(app)
+
+'''
+Configure webform
+'''
+app.config['SECRET_KEY']= 'tdx20020509?'
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
+class NameForm(FlaskForm):
+    name = StringField('What is your name?', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+'''
+App Function Definitions
+'''
+# view function: handle a web form with GET and POST request methods
+@app.route('/',methods=['GET','POST'])
 def index():
-    return render_template('index.html', current_time=datetime.utcnow())
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data =''
+    return render_template('index.html',form=form, name=name, current_time=datetime.utcnow())
 
 # make <name> optional
 @app.route('/user/')
