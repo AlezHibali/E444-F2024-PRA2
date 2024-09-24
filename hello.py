@@ -17,12 +17,12 @@ Configure webform
 app.config['SECRET_KEY']= 'SECRET_KEY_SECRET_KEY'
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, EmailField, SubmitField
+from wtforms.validators import DataRequired, Email
 
 class NameEmailForm(FlaskForm):
     name = StringField('What is your name?', validators=[DataRequired()])
-    email = StringField('What is your UofT Email Address?', validators=[DataRequired()])
+    email = EmailField('What is your UofT Email Address?', validators=[DataRequired()]) # no need Email()?
     submit = SubmitField('Submit')
 
 '''
@@ -40,7 +40,7 @@ def index():
             flash('Looks like you have changed your name!')
         if old_email is not None and old_email != form.email.data:
             flash('Looks like you have changed your email!')
-            
+
         session['name']= form.name.data
         session['email']= form.email.data
         return redirect(url_for('index'))
