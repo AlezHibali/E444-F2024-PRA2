@@ -7,7 +7,7 @@
 <div class="page-header">
     <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}! Welcome to PRA2 Docker! </h1>
     {% if email %}
-        {% if email.endswith('@mail.utoronto.ca') %}
+        {% if 'utoronto' in email.split('@')[-1] %}
             <h1>Your UofT email is {{ email }}</h1>
         {% else %}
             <h1>Please use your UofT email.</h1>
